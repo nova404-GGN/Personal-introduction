@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Georgina · 许婧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F6F2;
+    --surface: #FFFFFF;
+    --surface2: #F0EEE8;
+    --accent: #5B4EE8;
+    --accent2: #E8396A;
+    --accent3: #0AADCA;
+    --text: #1A1825;
+    --text-muted: #8C8A9E;
+    --border: #E2E0D8;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-numbers {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.05em;
+    font-family: var(--font-display);
+    font-size: clamp(200px, 35vw, 420px);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(91, 78, 232, 0.06);
+    letter-spacing: -0.02em;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .hero-name-en {
+    color: var(--text-muted);
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    font-family: var(--font-display);
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: rgba(240, 239, 248, 0.65);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-numbers {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .hero-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .hero-num.a { color: var(--accent); }
+  .hero-num.b { color: var(--accent2); }
+  .hero-num.c { color: var(--accent3); }
+
+  .hero-dot {
+    font-size: 22px;
+    color: var(--border);
+    margin: 0 4px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 40px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 100px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+
+  .section-number {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 12vw, 120px);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    flex-shrink: 0;
+    margin-top: -8px;
+  }
+
+  .section-number.n1 { color: var(--accent); }
+  .section-number.n2 { color: var(--accent2); }
+  .section-number.n3 { color: var(--accent3); }
+
+  .section-meta { padding-top: 8px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── TRAITS GRID ── */
+  .traits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .trait-card {
+    background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border-radius: 16px;
+    padding: 28px 28px 28px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .trait-card:hover {
+    border-color: rgba(91, 78, 232, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .trait-icon {
+    font-size: 26px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .trait-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .trait-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── PRODUCTS LIST ── */
+  .products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .product-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-item:last-child { border-bottom: none; }
+
+  .product-item:hover { background: var(--surface2); }
+
+  .product-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent2);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .product-item:hover::before { opacity: 1; }
+
+  .product-emoji {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    background: var(--surface2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .product-info { min-width: 0; }
+
+  .product-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .product-metric {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent2);
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: rgba(232, 57, 106, 0.07);
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(232, 57, 106, 0.2);
+  }
+
+  /* ── PERSONALITY ── */
+  .personality-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .personality-card {
+    background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .personality-card:hover {
+    border-color: rgba(10, 173, 202, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .personality-emoji {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .personality-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--accent3);
+  }
+
+  .personality-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 60px 40px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-left .footer-name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+  }
+
+  .contact-item {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .contact-item span {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── LANG TOGGLE ── */
+  .lang-bar {
+    position: fixed;
+    top: 28px;
+    right: 32px;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    padding: 7px 18px;
+    font-size: 12px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active {
+    background: var(--accent);
+    color: white;
+    border-radius: 100px;
+  }
+
+  /* ── LANG CONTENT ── */
+  .zh { display: block; }
+  .en { display: none; }
+  body.lang-en .zh { display: none; }
+  body.lang-en .en { display: block; }
+
+  .trait-card .zh,
+  .trait-card .en,
+  .product-item .zh,
+  .product-item .en,
+  .personality-card .zh,
+  .personality-card .en { display: inline; }
+
+  body.lang-en .trait-card .zh,
+  body.lang-en .product-item .zh,
+  body.lang-en .personality-card .zh { display: none; }
+
+  body.lang-en .trait-card .en,
+  body.lang-en .product-item .en,
+  body.lang-en .personality-card .en { display: inline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero, .section { padding-left: 24px; padding-right: 24px; }
+    .personality-grid { grid-template-columns: 1fr; }
+    .product-item { grid-template-columns: auto 1fr; }
+    .product-metric { display: none; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-contact { text-align: left; }
+    .contact-item { justify-content: flex-start; }
+    .lang-bar { top: 16px; right: 16px; }
+    .section-header { gap: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .traits-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Lang Toggle -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-numbers" aria-hidden="true">5·5·3</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="zh">产品经理 · AI产品与增长</span>
+      <span class="en">Product Manager · AI & Growth</span>
+    </div>
+    <h1>许婧</h1>
+    <div class="hero-name-en">Georgina Xu</div>
+    <p class="hero-desc">
+      <span class="zh">5年AI产品与增长经验，从智能穿戴到AI搜索，从Agent架构到外部渠道增长，跨硬件与AI两个赛道积累完整的产品交付能力。</span>
+      <span class="en">5 years building AI products and growth systems — from wearable hardware to AI search, from agent architecture to multi-channel growth strategy.</span>
+    </p>
+    <div class="hero-numbers">
+      <span class="hero-num a">5</span>
+      <span class="hero-dot">·</span>
+      <span style="color: var(--text-muted); font-size: 13px;">
+        <span class="zh">个人特征</span>
+        <span class="en">Strengths</span>
+      </span>
+      <span class="hero-dot" style="margin: 0 12px;">·</span>
+      <span class="hero-num b">5</span>
+      <span class="hero-dot">·</span>
+      <span style="color: var(--text-muted); font-size: 13px;">
+        <span class="zh">产品成果</span>
+        <span class="en">Products</span>
+      </span>
+      <span class="hero-dot" style="margin: 0 12px;">·</span>
+      <span class="hero-num c">3</span>
+      <span class="hero-dot">·</span>
+      <span style="color: var(--text-muted); font-size: 13px;">
+        <span class="zh">性格特质</span>
+        <span class="en">Personality</span>
+      </span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span class="zh">向下滚动</span>
+    <span class="en">Scroll</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 1: TRAITS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-number n1">5</div>
+    <div class="section-meta">
+      <div class="section-label">
+        <span class="zh">第一个 5</span>
+        <span class="en">First 5</span>
+      </div>
+      <div class="section-title">
+        <span class="zh">五个工作特征</span>
+        <span class="en">Five Working Strengths</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="traits-grid">
+    <div class="trait-card">
+      <div class="trait-icon">🌟</div>
+      <div>
+        <div class="trait-name">
+          <span class="zh">Owner 意识</span>
+          <span class="en">Owner Mindset</span>
+        </div>
+        <div class="trait-desc">
+          <span class="zh">从0到1独立跑通项目，不等资源、不等指令，主动识别机会并推动落地</span>
+          <span class="en">Drive projects from zero to one without waiting for direction. Spot the opportunity and own it.</span>
+        </div>
+      </div>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">✅</div>
+      <div>
+        <div class="trait-name">
+          <span class="zh">任务导向</span>
+          <span class="en">Result-Focused</span>
+        </div>
+        <div class="trait-desc">
+          <span class="zh">以交付结果为目标，习惯拆解路径、找最短链路，确保里程碑按时高质量达成</span>
+          <span class="en">Break down goals into clear steps and find the fastest path. Milestones land on time.</span>
+        </div>
+      </div>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">📑</div>
+      <div>
+        <div class="trait-name">
+          <span class="zh">快速学习</span>
+          <span class="en">Fast Learner</span>
+        </div>
+        <div class="trait-desc">
+          <span class="zh">从穿戴硬件到AI搜索到Agent架构，快速进入新领域并独立上手输出成果</span>
+          <span class="en">Moved from hardware to AI search to agent systems. New domains, quick ramp-up.</span>
+        </div>
+      </div>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">🧑‍🤝‍🧑</div>
+      <div>
+        <div class="trait-name">
+          <span class="zh">赋能组织</span>
+          <span class="en">Team Enabler</span>
+        </div>
+        <div class="trait-desc">
+          <span class="zh">沉淀方法论、流程与规范，让团队可复用我做过的事，持续放大个人影响力</span>
+          <span class="en">Document processes so others can reuse them. Individual work that multiplies across the team.</span>
+        </div>
+      </div>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">💡</div>
+      <div>
+        <div class="trait-name">
+          <span class="zh">逻辑思维</span>
+          <span class="en">Structured Thinker</span>
+        </div>
+        <div class="trait-desc">
+          <span class="zh">用数据和结构说话，先识别问题根因再行动，避免在错误方向上高效执行</span>
+          <span class="en">Data and logic first. Find the real problem before acting — not just executing fast in the wrong direction.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 2: PRODUCTS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-number n2">5</div>
+    <div class="section-meta">
+      <div class="section-label">
+        <span class="zh">第二个 5</span>
+        <span class="en">Second 5</span>
+      </div>
+      <div class="section-title">
+        <span class="zh">五个产品与关键成果</span>
+        <span class="en">Five Products & Key Results</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-list">
+    <div class="product-item">
+      <div class="product-emoji">📈</div>
+      <div class="product-info">
+        <div class="product-title">
+          <span class="zh">百度文库 · AI搜索增长通路</span>
+          <span class="en">Baidu Wenku · AI Search Growth</span>
+        </div>
+        <div class="product-sub">
+          <span class="zh">从0跑通AI DAU增长通路，跨3部门落地，商业转化率超文库大盘</span>
+          <span class="en">Built the full AI search pipeline from scratch. Crossed 3 teams. Beat platform average on conversion.</span>
+        </div>
+      </div>
+      <div class="product-metric">DAU 0 → 50万+</div>
+    </div>
+
+    <div class="product-item">
+      <div class="product-emoji">🤖</div>
+      <div class="product-info">
+        <div class="product-title">
+          <span class="zh">百度文库 · 两级Agent内容管线</span>
+          <span class="en">Baidu Wenku · Two-Agent Content Pipeline</span>
+        </div>
+        <div class="product-sub">
+          <span class="zh">主导设计过滤Agent+增长Agent协同架构，构建AI原生内容生产闭环</span>
+          <span class="en">Designed a two-agent system. Built a full generate–distribute–iterate loop.</span>
+        </div>
+      </div>
+      <div class="product-metric">日均节省 5亿 token</div>
+    </div>
+
+    <div class="product-item">
+      <div class="product-emoji">🔧</div>
+      <div class="product-info">
+        <div class="product-title">
+          <span class="zh">小米手表S3 · 整机软件方案</span>
+          <span class="en">Xiaomi Watch S3 · Full Software Solution</span>
+        </div>
+        <div class="product-sub">
+          <span class="zh">主导整机AI功能解决方案规划，覆盖eSIM、组件、三方生态等核心模块，协调13个领域交付</span>
+          <span class="en">Led full software solution planning. Covered eSIM, widgets, and app ecosystem. 13 teams coordinated.</span>
+        </div>
+      </div>
+      <div class="product-metric">首销超 200%</div>
+    </div>
+
+    <div class="product-item">
+      <div class="product-emoji">📊</div>
+      <div class="product-info">
+        <div class="product-title">
+          <span class="zh">小米运动健康App · 迭代策略</span>
+          <span class="en">Mi Fitness App · Iteration Strategy</span>
+        </div>
+        <div class="product-sub">
+          <span class="zh">分析用户好评场景，优化好评引导弹出策略，管理跨团队迭代交付流程</span>
+          <span class="en">Analyzed user behavior to improve review prompts. Managed cross-team iteration process.</span>
+        </div>
+      </div>
+      <div class="product-metric">App评分 ↑17%</div>
+    </div>
+
+    <div class="product-item">
+      <div class="product-emoji">✅</div>
+      <div class="product-info">
+        <div class="product-title">
+          <span class="zh">字节跳动飞书 · 薪酬系统模块</span>
+          <span class="en">ByteDance Feishu · Payroll System</span>
+        </div>
+        <div class="product-sub">
+          <span class="zh">独立完成14+需求设计，主导9个需求全流程闭环，社保/期权模块全部按时上线</span>
+          <span class="en">Completed 14+ requirement designs. Led 9 full-cycle projects. All modules launched on time.</span>
+        </div>
+      </div>
+      <div class="product-metric">100% 按时交付</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 3: PERSONALITY -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-number n3">3</div>
+    <div class="section-meta">
+      <div class="section-label">
+        <span class="zh">第三个 3</span>
+        <span class="en">Third 3</span>
+      </div>
+      <div class="section-title">
+        <span class="zh">三个性格特质</span>
+        <span class="en">Three Personality Traits</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="personality-grid">
+    <div class="personality-card">
+      <span class="personality-emoji">😌</span>
+      <div class="personality-name">
+        <span class="zh">情绪稳定</span>
+        <span class="en">Emotionally Stable</span>
+      </div>
+      <div class="personality-desc">
+        <span class="zh">高压项目中保持节奏，不传递焦虑，让团队在困难时刻仍能有序推进</span>
+        <span class="en">Stay calm under pressure. Don't spread stress. Keep the team moving when things get hard.</span>
+      </div>
+    </div>
+
+    <div class="personality-card">
+      <span class="personality-emoji">🌱</span>
+      <div class="personality-name">
+        <span class="zh">乐观积极</span>
+        <span class="en">Optimistic</span>
+      </div>
+      <div class="personality-desc">
+        <span class="zh">遇到问题先想解法，再评估影响，把障碍看作路径优化的机会而非终点</span>
+        <span class="en">When problems come up, look for solutions first. Obstacles are just path optimization opportunities.</span>
+      </div>
+    </div>
+
+    <div class="personality-card">
+      <span class="personality-emoji">🤝</span>
+      <div class="personality-name">
+        <span class="zh">共情能力</span>
+        <span class="en">Empathetic</span>
+      </div>
+      <div class="personality-desc">
+        <span class="zh">能站在不同角色视角理解诉求，跨团队沟通顺畅，让协调工作产生真实推力</span>
+        <span class="en">See things from different people's views. Cross-team work flows because people feel understood.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-name">许婧 · Georgina</div>
+    <div class="footer-tagline">
+      <span class="zh">AI产品经理 · 北京 · 求职意向：产品经理</span>
+      <span class="en">AI Product Manager · Beijing · Open to opportunities</span>
+    </div>
+  </div>
+  <div class="footer-contact">
+    <div class="contact-item">
+      <span class="zh">邮箱</span>
+      <span class="en">Email</span>
+      <span>xujing010@icloud.com</span>
+    </div>
+    <div class="contact-item">
+      <span class="zh">电话</span>
+      <span class="en">Phone</span>
+      <span>18262622710</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang === 'en' ? 'lang-en' : '';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'en' ? 'EN' : '中文'));
+    });
+  }
+</script>
+</body>
+</html>
